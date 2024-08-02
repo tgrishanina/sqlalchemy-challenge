@@ -48,8 +48,7 @@ def homepage():
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/<start><br/>"
-        f"/api/v1.0/<start>/<end><br/>"
+        f"/api/v1.0/start<br/>"
     )
 
 
@@ -108,19 +107,56 @@ def tobs():
 
 
 # 4) <start> route
-@app.route("/api/v1.0/<start>")
+@app.route("/api/v1.0/start/<start>")
 def start(start):
+
+        # Parse the start date
+        start_date = dt.datetime.strptime(start, "%Y-%m-%d").date()
+    
         stats = [func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)]
         
         stats_result = session.query(*stats).\
-        filter(Measurement.date >= start)\
+        filter(Measurement.date >= start_date)\
         .all()
 
-        return jsonify(stats_result)
+        # Format the result as a dictionary
+        temp_stats = {
+        "Start Date": start,
+        "TMIN": stats_result[0][0],
+        "TMAX": stats_result[0][1],
+        "TAVG": stats_result[0][2]
+        }
+
+        return jsonify(temp_stats)
     
+# 5) <start>/<end> route
 
+@app.route("/api/v1.0/start/<start>/<end>")
+def start_to_end(start,end):
 
+        # Parse the start and end dates
+        start_date = dt.datetime.strptime(start, "%Y-%m-%d").date()
+        end_date = dt.datetime.strptime(end, "%Y-%m-%d").date()
+    
+        stats = [func.min(Measurement.tobs), func.max(Measurement.tobs), func.avg(Measurement.tobs)]
+        
+        stats_result = session.query(*stats).\
+        filter(Measurement.date >= start_date).\
+        filter(Measurement.date <= end_date)\
+        .all()
 
+        # Format the result as a dictionary
+        temp_stats = {
+        "Start Date": start,
+        "End Date": end,
+        "TMIN": stats_result[0][0],
+        "TMAX": stats_result[0][1],
+        "TAVG": stats_result[0][2]
+        }
+
+        return jsonify(temp_stats)
+
+session.close()
 
 if __name__ == '__main__':
     app.run(debug=True)
