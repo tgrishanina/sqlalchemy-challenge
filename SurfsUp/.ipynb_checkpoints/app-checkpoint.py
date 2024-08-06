@@ -49,6 +49,8 @@ def homepage():
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
         f"/api/v1.0/start<br/>"
+        f"Available Years: 2010-2017<br/>"
+        f"Please enter date in YYYY-MM-DD format<br/>"
     )
 
 
