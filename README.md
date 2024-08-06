@@ -28,7 +28,11 @@ In this section, you’ll use Python and SQLAlchemy to do a basic climate analys
 
 - Plot the results by using the DataFrame plot method.
 
+![prcp_graph.png](https://github.com/tgrishanina/sqlalchemy-challenge/blob/main/Images/prcp_graph.png)
+
 - Use Pandas to print the summary statistics for the precipitation data.
+
+
 
 ## Station Analysis
 
@@ -46,7 +50,9 @@ In this section, you’ll use Python and SQLAlchemy to do a basic climate analys
 
 - Query the previous 12 months of TOBS data for that station.
 
-- Plot the results as a histogram with bins=12, as the following image shows:
+- Plot the results as a histogram with bins=12.
+
+![tobs_graph.png](https://github.com/tgrishanina/sqlalchemy-challenge/blob/main/Images/tobs_graph.png)
 
 - Close your session.
 
@@ -60,15 +66,21 @@ In this section, you’ll use Python and SQLAlchemy to do a basic climate analys
 
 - List all the available routes.
 
+![home_page.png](https://github.com/tgrishanina/sqlalchemy-challenge/blob/main/Images/home_page.png)
+
 ## /api/v1.0/precipitation
 
 - Convert the query results from your precipitation analysis (i.e. retrieve only the last 12 months of data) to a dictionary using date as the key and prcp as the value.
 
 - Return the JSON representation of your dictionary.
 
+![precipitation_example.png](https://github.com/tgrishanina/sqlalchemy-challenge/blob/main/Images/precipitation_example.png)
+
 ## /api/v1.0/stations
 
 - Return a JSON list of stations from the dataset.
+
+![stations.png](https://github.com/tgrishanina/sqlalchemy-challenge/blob/main/Images/stations.png)
 
 ## /api/v1.0/tobs
 
@@ -76,11 +88,16 @@ In this section, you’ll use Python and SQLAlchemy to do a basic climate analys
 
 - Return a JSON list of temperature observations for the previous year.
 
+![tobs_example.png](https://github.com/tgrishanina/sqlalchemy-challenge/blob/main/Images/tobs_example.png)
+
 ## /api/v1.0/<start> and /api/v1.0/<start>/<end>
 
 - Return a JSON list of the minimum temperature, the average temperature, and the maximum temperature for a specified start or start-end range.
 
 - For a specified start, calculate TMIN, TAVG, and TMAX for all the dates greater than or equal to the start date.
 
+![start_example.png](https://github.com/tgrishanina/sqlalchemy-challenge/blob/main/Images/start_example.png)
+
 - For a specified start date and end date, calculate TMIN, TAVG, and TMAX for the dates from the start date to the end date, inclusive.
 
+![start_end.png](https://github.com/tgrishanina/sqlalchemy-challenge/blob/main/Images/start_end.png)
