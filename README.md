@@ -32,7 +32,7 @@ In this section, you’ll use Python and SQLAlchemy to do a basic climate analys
 
 - Use Pandas to print the summary statistics for the precipitation data.
 
-![summary_statistics.png](https://github.com/tgrishanina/sqlalchemy-challenge/blob/main/Images/summmary_statistics.png)
+![summary_statistics.png](https://github.com/tgrishanina/sqlalchemy-challenge/blob/main/Images/summary_statistics.png)
 
 
 ## Station Analysis
